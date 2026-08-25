@@ -1,6 +1,6 @@
-package com.jgreen.taskarray.validation.impl;
+package com.jgreen.taskarray.service.validation.impl;
 
-import com.jgreen.taskarray.validation.IntArrayValidation;
+import com.jgreen.taskarray.service.validation.IntArrayValidation;
 
 public class IntArrayValidationImpl implements IntArrayValidation {
     private static final String INTEGER_REGEX = "^-?\\d+$";

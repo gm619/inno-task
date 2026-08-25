@@ -1,10 +1,11 @@
 package com.jgreen.taskarray.factory;
 
-import com.jgreen.taskarray.parser.IntArrayParser;
-import com.jgreen.taskarray.reader.FileReader;
-import com.jgreen.taskarray.service.ArrayStatisticsProcessor;
-import com.jgreen.taskarray.service.IntArrayService;
-import com.jgreen.taskarray.service.SortArrayService;
+import com.jgreen.taskarray.service.parser.IntArrayParser;
+import com.jgreen.taskarray.service.reader.FileReader;
+import com.jgreen.taskarray.service.sorting.impl.BubbleSortArrayServiceImpl;
+import com.jgreen.taskarray.service.sorting.impl.SelectionSortArrayServiceImpl;
+import com.jgreen.taskarray.service.statistic.ArrayStatisticsProcessor;
+import com.jgreen.taskarray.service.statistic.IntArrayService;
 
 public abstract class ComponentFactory {
 
@@ -14,7 +15,9 @@ public abstract class ComponentFactory {
 
     public abstract IntArrayService createIntArrayService();
 
-    public abstract SortArrayService createSortArrayService();
+    public abstract BubbleSortArrayServiceImpl createBubbleSortArrayService();
+    
+    public abstract SelectionSortArrayServiceImpl createSelectionSortArrayService();
 
     public abstract ArrayStatisticsProcessor createArrayStatisticsProcessor();
 }

@@ -1,4 +1,4 @@
-package com.jgreen.taskarray.parser;
+package com.jgreen.taskarray.service.parser;
 
 import com.jgreen.taskarray.exception.CustomArrayExecption;
 import java.util.List;

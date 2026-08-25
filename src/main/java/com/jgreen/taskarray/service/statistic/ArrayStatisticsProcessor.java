@@ -1,4 +1,4 @@
-package com.jgreen.taskarray.service;
+package com.jgreen.taskarray.service.statistic;
 
 import java.io.IOException;
 

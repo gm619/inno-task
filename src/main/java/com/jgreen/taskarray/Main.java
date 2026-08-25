@@ -2,7 +2,7 @@ package com.jgreen.taskarray;
 
 import com.jgreen.taskarray.factory.ComponentFactory;
 import com.jgreen.taskarray.factory.impl.DefaultComponentFactory;
-import com.jgreen.taskarray.service.ArrayStatisticsProcessor;
+import com.jgreen.taskarray.service.statistic.ArrayStatisticsProcessor;
 
 import java.io.IOException;
 

@@ -1,6 +1,4 @@
-package com.jgreen.taskarray.reader.impl;
-
-import com.jgreen.taskarray.reader.FileReader;
+package com.jgreen.taskarray.service.reader.impl;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,6 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+
+import com.jgreen.taskarray.service.reader.FileReader;
 
 public class FileReaderImpl implements FileReader {
     @Override

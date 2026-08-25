@@ -1,4 +1,4 @@
-package com.jgreen.taskarray.service;
+package com.jgreen.taskarray.service.statistic;
 
 import java.util.OptionalDouble;
 import java.util.OptionalInt;

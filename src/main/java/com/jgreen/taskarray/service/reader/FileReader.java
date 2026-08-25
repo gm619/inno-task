@@ -1,4 +1,4 @@
-package com.jgreen.taskarray.reader;
+package com.jgreen.taskarray.service.reader;
 
 import java.io.IOException;
 import java.util.List;

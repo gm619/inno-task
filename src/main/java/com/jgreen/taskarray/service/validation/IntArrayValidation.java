@@ -1,4 +1,4 @@
-package com.jgreen.taskarray.validation;
+package com.jgreen.taskarray.service.validation;
 
 public interface IntArrayValidation {
     boolean isValidNumber(String token);
