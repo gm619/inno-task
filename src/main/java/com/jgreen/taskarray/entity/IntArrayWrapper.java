@@ -1,15 +1,15 @@
-package jgreen.taskarray.entity;
+package com.jgreen.taskarray.entity;
 
 import java.util.Arrays;
 
-public class IntArray {
+public class IntArrayWrapper {
 	private final int[] array;
 
-	public IntArray() {
+	public IntArrayWrapper() {
 		this.array = new int[0];
 	}
 	
-	public IntArray(int[] array) {
+	public IntArrayWrapper(int[] array) {
 		this.array = array.clone();
 	}
 	

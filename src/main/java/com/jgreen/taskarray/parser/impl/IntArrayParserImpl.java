@@ -1,10 +1,13 @@
-package jgreen.taskarray.parser.impl;
+package com.jgreen.taskarray.parser.impl;
 
-import jgreen.taskarray.parser.IntArrayParser;
-import jgreen.taskarray.exception.CustomArrayExecption;
+import com.jgreen.taskarray.exception.CustomArrayExecption;
+import com.jgreen.taskarray.parser.IntArrayParser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class IntArrayParserImpl implements IntArrayParser {
-	public static final String REGEX = "[,;\\s\\-_/\\\\|]+";
+	public static final String REGEX = "[,;\\-–\\s\\D+]+";
 	
 	@Override
 	public int[] parse(String line) throws CustomArrayExecption {
@@ -31,5 +34,17 @@ public class IntArrayParserImpl implements IntArrayParser {
             }
         }
         return result;
+	}
+	
+	@Override
+	public List<String> parseTokens(String line) {
+		List<String> tokens = new ArrayList<>();
+		String[] rawParts = line.trim().split(REGEX);
+		for (String part : rawParts) {
+			if (!part.isEmpty()) {
+				tokens.add(part);
+			}
+		}
+		return tokens;
 	}
 }

@@ -1,4 +1,4 @@
-package jgreen.taskarray.exception;
+package com.jgreen.taskarray.exception;
 
 public class CustomArrayExecption extends Exception {
 	private static final long serialVersionUID = 1L;

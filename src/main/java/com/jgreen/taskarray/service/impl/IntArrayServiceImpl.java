@@ -1,7 +1,7 @@
-package jgreen.taskarray.service.impl;
+package com.jgreen.taskarray.service.impl;
 
-import jgreen.taskarray.entity.IntArray;
-import jgreen.taskarray.service.IntArrayService;
+import com.jgreen.taskarray.entity.IntArrayWrapper;
+import com.jgreen.taskarray.service.IntArrayService;
 
 import java.util.Arrays;
 import java.util.OptionalInt;
@@ -9,7 +9,7 @@ import java.util.OptionalDouble;
 
 public class IntArrayServiceImpl implements IntArrayService {
 	@Override
-	public OptionalInt min(IntArray intArray) {
+	public OptionalInt min(IntArrayWrapper intArray) {
 		// Should be in reader or validation
 		if (intArray.length() < 1) {
 			return OptionalInt.empty();
@@ -19,17 +19,17 @@ public class IntArrayServiceImpl implements IntArrayService {
 	}
 
 	@Override
-	public OptionalInt max(IntArray intArray) {
+	public OptionalInt max(IntArrayWrapper intArray) {
 		return Arrays.stream(intArray.getArray()).max();
 	}
 	
 	@Override
-	public OptionalInt sum(IntArray intArray) {
+	public OptionalInt sum(IntArrayWrapper intArray) {
 		return OptionalInt.of(Arrays.stream(intArray.getArray()).sum());
 	}
 	
 	@Override
-	public OptionalDouble average(IntArray intArray) {
+	public OptionalDouble average(IntArrayWrapper intArray) {
 		return Arrays.stream(intArray.getArray()).average();
 	}
 }
