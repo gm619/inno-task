@@ -6,8 +6,7 @@ import java.util.Arrays;
  * Immutable wrapper around a primitive {@code int} array.
  *
  * <p>Instances may be created either directly via the public constructors,
- * through the {@link ArrayFactoryMethod factory} pattern, or using the
- * {@link Builder} (Builder pattern).</p>
+ * through the {@link ArrayFactoryMethod factory} pattern.</p>
  */
 public class IntArrayWrapper {
 	private final int[] array;
