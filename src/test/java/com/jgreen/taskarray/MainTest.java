@@ -1,4 +1,4 @@
-package jgreen.taskarray;
+package com.jgreen.taskarray;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

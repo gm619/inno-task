@@ -15,25 +15,27 @@ public class IntArrayParserImpl implements IntArrayParser {
 			return null;
 		}
 		
-        String trimmed = line.strip();
-        if (trimmed.isEmpty()) {
-            return null;
-        }
+		String trimmed = line.strip();
+		if (trimmed.isEmpty()) {
+				return null;
+		}
 
-        String[] tokens = trimmed.split(REGEX);
-        if (tokens.length == 0) {
-            throw new CustomArrayExecption("No valid numbers found");
-        }
+		String[] tokens = trimmed.split(REGEX);
+		if (tokens.length == 0) {
+				throw new CustomArrayExecption("No valid numbers found");
+		}
 
-        int[] result = new int[tokens.length];
-        for (int i = 0; i < tokens.length; i++) {
-            try {
-                result[i] = Integer.parseInt(tokens[i]);
-            } catch (NumberFormatException e) {
-                throw new CustomArrayExecption("Invalid number: " + tokens[i]);
-            }
-        }
-        return result;
+		int[] result = new int[tokens.length];
+		
+		for (int i = 0; i < tokens.length; i++) {
+				try {
+						result[i] = Integer.parseInt(tokens[i]);
+				} catch (NumberFormatException e) {
+						// TODO: this code never reached
+						throw new CustomArrayExecption("Invalid number: " + tokens[i]);
+				}
+		}
+		return result;
 	}
 	
 	@Override
