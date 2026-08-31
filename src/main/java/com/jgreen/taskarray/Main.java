@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.OptionalDouble;
-import java.util.OptionalInt;
+import java.util.function.Function;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -110,9 +110,11 @@ public final class Main {
 		IntArrayWrapper array = intFactory.create(parsed);
 		logger.info("  IntArrayWrapper created (length={}): {}", array.length(), array);
 
-		sortAndLog(array.getArray());
-		logStatistics(statisticsService.intMin(array), statisticsService.intMax(array),
-				statisticsService.intSum(array), statisticsService.intAverage(array));
+		sortAndLog(sortService -> Arrays.toString(sortService.sort(array.getArray())));
+		logStatistics(statisticsService.intMin(array).orElseThrow(),
+				statisticsService.intMax(array).orElseThrow(),
+				statisticsService.intSum(array).getAsInt(),
+				statisticsService.intAverage(array));
 	}
 
 	private static void processDoubleFile(String filePath) {
@@ -149,36 +151,36 @@ public final class Main {
 		DoubleArrayWrapper array = doubleFactory.create(parsed);
 		logger.info("  DoubleArrayWrapper created (length={}): {}", array.length(), array);
 
-		sortAndLog(array.getArray());
-		logDoubleStatistics(statisticsService.doubleMin(array), statisticsService.doubleMax(array),
-				statisticsService.doubleSum(array), statisticsService.doubleAverage(array));
+		sortAndLog(sortService -> Arrays.toString(sortService.sort(array.getArray())));
+		logStatistics(statisticsService.doubleMin(array).orElseThrow(),
+				statisticsService.doubleMax(array).orElseThrow(),
+				statisticsService.doubleSum(array).orElseThrow(),
+				statisticsService.doubleAverage(array));
 	}
 
-	private static void sortAndLog(int[] values) {
+	/**
+	 * Sorts the given values with every registered sort strategy and logs results.
+	 *
+	 * @param sorter produces the textual representation of a sorted array for
+	 *               a given {@link SortArrayService}
+	 */
+	private static void sortAndLog(Function<SortArrayService, String> sorter) {
 		for (SortArrayService sortService : sortServices) {
-			int[] sorted = sortService.sort(values);
-			logger.info("  {} -> {}", sortService.getClass().getSimpleName(), Arrays.toString(sorted));
+			logger.info("  {} -> {}", sortService.getClass().getSimpleName(), sorter.apply(sortService));
 		}
 	}
 
-	private static void sortAndLog(double[] values) {
-		for (SortArrayService sortService : sortServices) {
-			double[] sorted = sortService.sort(values);
-			logger.info("  {} -> {}", sortService.getClass().getSimpleName(), Arrays.toString(sorted));
-		}
-	}
-
-	private static void logStatistics(OptionalInt min, OptionalInt max,
-			OptionalInt sum, OptionalDouble avg) {
+	/**
+	 * Logs computed statistics.
+	 *
+	 * @param min the minimum value
+	 * @param max the maximum value
+	 * @param sum the sum
+	 * @param avg the average (if present)
+	 */
+	private static void logStatistics(Number min, Number max, Number sum, OptionalDouble avg) {
 		logger.info("  Statistics: min={}, max={}, sum={}, average={}",
-				min.orElseThrow(), max.orElseThrow(), sum.getAsInt(),
-				avg.isPresent() ? String.format("%.4f", avg.getAsDouble()) : "N/A");
-	}
-
-	private static void logDoubleStatistics(OptionalDouble min, OptionalDouble max,
-			OptionalDouble sum, OptionalDouble avg) {
-		logger.info("  Statistics: min={}, max={}, sum={}, average={}",
-				min.orElseThrow(), max.orElseThrow(), sum.orElseThrow(),
+				min, max, sum,
 				avg.isPresent() ? String.format("%.4f", avg.getAsDouble()) : "N/A");
 	}
 }
