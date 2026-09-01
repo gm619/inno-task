@@ -6,15 +6,10 @@ import java.util.Arrays;
  * Mutable wrapper around a primitive {@code int} array.
  *
  * <p>Instances may be created either directly via the public constructors,
-<<<<<<< Updated upstream
- * through the {@link ArrayFactoryMethod factory} pattern, or using the
- * {@link Builder} (Builder pattern).</p>
-=======
  * through the {@link com.jgreen.taskarray.factory.ArrayFactoryMethod factory}
  * pattern. Every instance declares an identity ({@code id}/{@code name}) as
  * required by the task and notifies its {@link EntityChangeListener} whenever
  * an element is modified.</p>
->>>>>>> Stashed changes
  */
 public class IntArrayWrapper implements ArrayEntity {
 
